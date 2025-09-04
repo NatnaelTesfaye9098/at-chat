@@ -3,6 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { FaArrowUp } from "react-icons/fa";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 type Props = {
   onSend: (message: string) => void;
@@ -37,12 +38,14 @@ const InputArea = ({onSend}: Props) => {
                         onKeyDown={handleKeyDown}
                         placeholder="Type your ideas, inquiries or thoughts"
                     />
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                         className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-gray-300 dark:bg-gray-800 hover:bg-gray-400 hover:dark:bg-gray-900 p-3 cursor-pointer"
                         onClick={handleSend}
                     >
                         <FaArrowUp />
-                    </button>
+                    </motion.button>
                 </div>
             </div>
         </>

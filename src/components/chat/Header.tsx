@@ -1,12 +1,17 @@
 "use client"
 
-import { TbMoonFilled, TbSunFilled } from "react-icons/tb";
+import { TbMoonFilled, TbSunFilled, TbTrash } from "react-icons/tb";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
 const Header = () => {
 
     const [dark, setDark] = useState<boolean>(false);
+
+    const clearChat = () => {
+        localStorage.removeItem("chatMessages");
+        window.location.reload();
+    };
 
     useEffect(() => {
         if (dark) {
@@ -27,6 +32,9 @@ const Header = () => {
                 <a href="#" className="relative inline-block after:absolute after:left-1/2 after:bottom-0 after:h-[1.5px] after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-out after:-translate-x-1/2 hover:after:w-full">
                     About
                 </a>
+                <Button variant="ghost" size="icon" className="cursor-pointer" onClick={clearChat}>
+                    <TbTrash className="cursor-pointer text-xl"/>
+                </Button>
                 <Button variant="ghost" size="icon" className="cursor-pointer" onClick={() => setDark(!dark)}>
                     {dark ? <TbSunFilled className="cursor-pointer text-xl"/> : <TbMoonFilled className="cursor-pointer text-xl"/>}
                 </Button>
