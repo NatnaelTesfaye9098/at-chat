@@ -19,7 +19,7 @@ const Header = () => {
     return(
         <header className="fixed top-0 w-full backdrop-blur-md bg-white/30 border-b border-white/20 shadow-md">
             <div className="max-w-6xl mx-auto px-3 py-3 flex items-center justify-between">
-                <h1 className="text-lg font-bold">My App</h1>
+                <h1 className="text-lg font-bold">At chat</h1>
                 <nav className="flex gap-4 items-center">
                 <a href="#" className="relative inline-block after:absolute after:left-1/2 after:bottom-0 after:h-[1.5px] after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-out after:-translate-x-1/2 hover:dark:after:w-full">
                     Home

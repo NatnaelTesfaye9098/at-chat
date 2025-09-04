@@ -1,11 +1,9 @@
-import Header from "../components/chat/Header"
-import InputArea from "../components/chat/InputArea"
+import ChatLayout from "../components/chat/ChatLayout"
 
 export default function HomePage(){
   return(
     <>
-      <Header/>
-      <InputArea/>
+      <ChatLayout/>
     </>
   )
 }
