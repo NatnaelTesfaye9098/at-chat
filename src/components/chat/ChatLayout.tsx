@@ -1,35 +1,48 @@
-"use client";
+"use client"
 
-import { useEffect, useRef} from "react";
-import Header from "./Header";
-import InputArea from "./InputArea";
+import { useEffect, useRef, useState } from "react"
+import Header from "./Header"
+import InputArea from "./InputArea"
+import MessageBubble from "./message-bubble"
+import { Message } from "@/lib/types"
+import TypingIndicator from "./typing-indicator"
 
 export default function ChatLayout() {
+  const [messages, setMessages] = useState<Message[]>([
+    { id: "1", role: "assistant", content: "Hey! I’m your AI assistant 😊" },
+    { id: "2", role: "user", content: "Hi! Show me a demo message" },
+    { id: "3", role: "assistant", content: "Sure! These are left vs right bubbles." },
+  ]);
 
-    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const [isThinking, setIsThinking] = useState<boolean>(true);
 
-    useEffect(() => {
-       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    });
+  const messagesEndRef = useRef<HTMLDivElement | null>(null)
 
-    return(
-        <div className="flex flex-col h-screen">
-            <Header/>
-            <main className="flex-1 overflow-y-auto px-30 py-15 space-y-4">
-                {Array.from({ length: 30 }).map((_, i) => (
-                    <div
-                        key={i}
-                        className="bg-gray-200 dark:bg-gray-700 rounded-lg p-3 w-fit"
-                        >
-                        Message {i + 1}
-                    </div>
-                ))}
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
 
-                <div ref={messagesEndRef} />
-            </main>
-            <footer className="relative h-24">
-                <InputArea/>
-            </footer>
-        </div>
-    )
+  return (
+    <div className="flex flex-col h-screen">
+      <Header />
+
+      <main className="flex-1 overflow-y-auto px-4 py-20 space-y-4">
+        {messages.map((m) => (
+          <MessageBubble key={m.id} message={m} />
+        ))}
+
+        {isThinking && (
+            <div className="flex justify-start">
+                <TypingIndicator />
+            </div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </main>
+
+      <footer className="relative h-24">
+        <InputArea />
+      </footer>
+    </div>
+  )
 }
