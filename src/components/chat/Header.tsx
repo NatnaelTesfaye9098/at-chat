@@ -29,7 +29,7 @@ const Header = () => {
                 <a href="#" className="relative inline-block after:absolute after:left-1/2 after:bottom-0 after:h-[1.5px] after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-out after:-translate-x-1/2 hover:after:w-full">
                     Home
                 </a>
-                <a href="#" className="relative inline-block after:absolute after:left-1/2 after:bottom-0 after:h-[1.5px] after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-out after:-translate-x-1/2 hover:dark:after:w-full">
+                <a href="#" className="relative inline-block after:absolute after:left-1/2 after:bottom-0 after:h-[1.5px] after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 after:ease-out after:-translate-x-1/2 hover:after:w-full">
                     About
                 </a>
                 <Button variant="ghost" size="icon" className="cursor-pointer" onClick={clearChat}>
